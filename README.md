@@ -1,8 +1,10 @@
 # project-48-two-person-chat-app
 
 ## Description
+This is a basic realtime chat app for two person discussion and based on Firebase and on React. I started by creating new app in firebase, then i set firestore to manage nosql database, I set authentication rule on google account credential. Then, I created my react components by using firbase hooks and methods like "useCollectionData","GoogleAuthProvider()" to manage Chat message, form.  
 
 ## Stack
+react, firebase
 
 ## Launch
 
