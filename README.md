@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# project-48-two-person-chat-app
+
+## Description
+
+## Stack
+
+## Launch
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
