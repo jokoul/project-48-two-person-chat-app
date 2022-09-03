@@ -8,7 +8,7 @@ import "firebase/compat/auth";
 //import hooks
 import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 firebase.initializeApp({
   //config
@@ -27,7 +27,10 @@ function App() {
   const [user] = useAuthState(auth); //if user is signed in=>user is an object, if sign out=> user is null
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <header>
+      <h1>Two-person-chat</h1>
+      <SignOut />
+      </header>
       <section>{user ? <ChatRoom /> : <SignIn />}</section>
     </div>
   );
@@ -57,6 +60,8 @@ function ChatRoom() {
   const [messages] = useCollectionData(query, { idField: "id" });
   const [formValue, setFormValue] = useState("");
 
+  const dummy = useRef()
+
   //Write value to firestore
   const sendMessage = async(e)=>{
     e.preventDefault();
@@ -71,14 +76,16 @@ function ChatRoom() {
     });
 
     setFormValue('');//to empty field
+    dummy.current.scrollIntoView({behavior:'smooth'})
   }
 
   return (
     <div>
-      <div>
+      <main>
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
-      </div>
+          <div ref={dummy}></div>
+      </main>
       <form onSubmit={sendMessage}>
         {/*Bind state to form input*/}
         <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
